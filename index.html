@@ -35,7 +35,6 @@ body{
   white-space:nowrap;
 }
 
-/* SECTION */
 section{
   max-width:900px;
   margin:80px auto;
@@ -43,6 +42,9 @@ section{
   background:#f9fafb;
   border-radius:15px;
   border:1px solid #e5e7eb;
+
+  page-break-after: always;
+  break-after: page;
 }
 
 h2{
@@ -54,6 +56,11 @@ img{
   border-radius:10px;
   margin-top:10px;
 }
+  @media print {
+  .menu, button {
+    display: none;
+  }
+  } 
 </style>
 </head>
 
@@ -302,11 +309,20 @@ function downloadPDF(){
   const element = document.getElementById("container");
 
   const opt = {
-    margin: 5,
+    margin: [5,5,5,5],
     filename: 'bank_tizimi.pdf',
     image: { type: 'jpeg', quality: 1 },
-    html2canvas: { scale: 3, useCORS: true },
-    jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+    html2canvas: { 
+      scale: 2,
+      useCORS: true,
+      scrollY: 0
+    },
+    jsPDF: { 
+      unit: 'mm', 
+      format: 'a4', 
+      orientation: 'portrait' 
+    },
+    pagebreak: { mode: ['css', 'legacy'] }
   };
 
   html2pdf().set(opt).from(element).save();
