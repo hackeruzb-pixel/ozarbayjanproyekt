@@ -88,8 +88,37 @@ box-shadow:0 -5px 20px rgba(0,0,0,0.1);
 font-size:14px;
 color:#555;
 }
+
+  .sidebar{
+  position:fixed;
+  left:0;
+  top:0;
+  height:100vh;
+  width:200px;
+  overflow-y:auto;
+  background:#f3f4f6;
+  padding:10px;
+  border-right:1px solid #ddd;
+}
+
+.sidebar button{
+  display:block;
+  width:100%;
+  margin-bottom:6px;
+  padding:8px;
+  border:none;
+  background:#fff;
+  border-radius:8px;
+  cursor:pointer;
+  text-align:left;
+}
+
+.sidebar button.active-side{
+  background:#0ea5e9;
+  color:#fff;
+}
 </style></head><body><div class="progress" id="progress">1 / 1</div><!-- SLIDES --><div id="slides"></div><!-- swipe area --><div class="swipe-area">
-<div class="swipe-text">⬅ chapga / o‘ngga suring</div>
+<div class="sidebar" id="sidebar"></div>
 </div><script>
 const slidesData = [  
 {  
@@ -339,18 +368,35 @@ else show(slides.length-1);
 }
 
 /* TOUCH SWIPE */
-let startX=0;
+const sidebar = document.getElementById("sidebar");
 
-document.addEventListener("touchstart",e=>{
-startX=e.touches[0].clientX;
+slides.forEach((s,i)=>{
+  let btn = document.createElement("button");
+  btn.innerText = (i+1) + ". " + s.title;
+
+  btn.onclick = ()=>showSlide(i);
+
+  sidebar.appendChild(btn);
 });
 
-document.addEventListener("touchend",e=>{
-let endX=e.changedTouches[0].clientX;
-if(startX-endX>50) next();
-if(endX-startX>50) prev();
-});
+function updateSidebar(){
+  document.querySelectorAll(".sidebar button").forEach((btn,i)=>{
+    btn.classList.toggle("active-side", i === current);
+  });
+}
 
-show(0);
+function showSlide(i){
+  slides[current].classList.remove("active");
+  current = i;
+  slides[current].classList.add("active");
+
+  document.getElementById("progress").innerText =
+  `${current+1} / ${slides.length}`;
+
+  updateSidebar();
+}
+
+showSlide(0);
+updateSidebar();;
 </script></body>
 </html>
