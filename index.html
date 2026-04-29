@@ -34,7 +34,6 @@ body{
   font-weight:bold;
   white-space:nowrap;
 }
-
 section{
   max-width:900px;
   margin:80px auto;
@@ -43,9 +42,13 @@ section{
   border-radius:15px;
   border:1px solid #e5e7eb;
 
-  page-break-after: always;
-  break-after: page;
+  page-break-after: always;   /* 🔥 HAR SLAYD YANGI SAHIFA */
 }
+
+.menu, button{
+  display:none !important; /* PDFda menu chiqmasin */
+}
+
 
 h2{
   color:#0ea5e9;
@@ -309,12 +312,11 @@ function downloadPDF(){
   const element = document.getElementById("container");
 
   const opt = {
-    margin: [5,5,5,5],
+    margin: 0,
     filename: 'bank_tizimi.pdf',
     image: { type: 'jpeg', quality: 1 },
     html2canvas: { 
       scale: 2,
-      useCORS: true,
       scrollY: 0
     },
     jsPDF: { 
@@ -322,7 +324,7 @@ function downloadPDF(){
       format: 'a4', 
       orientation: 'portrait' 
     },
-    pagebreak: { mode: ['css', 'legacy'] }
+    pagebreak: { mode: ['css', 'legacy'] } // 🔥 MUHIM
   };
 
   html2pdf().set(opt).from(element).save();
