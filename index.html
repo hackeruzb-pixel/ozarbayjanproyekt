@@ -292,7 +292,10 @@ slidesData.forEach((s,i)=>{
 
   container.appendChild(sec);
 
-  
+    let btn = document.createElement("button");
+  btn.innerText = i+1;
+  btn.onclick = ()=>document.getElementById("s"+i).scrollIntoView({behavior:"smooth"});
+  menu.appendChild(btn);
 </script>
 
 </body>
