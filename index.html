@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Ozarbayjon Bank Tizimi</title>
-
+https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js
 <style>
 body{
   margin:0;
@@ -62,7 +62,7 @@ img{
 <div class="menu" id="menu"></div>
 
 <div id="container"></div>
-
+<button onclick="downloadPDF()">PDF yuklash</button>
 <script>
 
 const slidesData = [      
@@ -298,7 +298,19 @@ slidesData.forEach((s,i)=>{
   btn.onclick = ()=>document.getElementById("s"+i).scrollIntoView({behavior:"smooth"});
   menu.appendChild(btn);
 });
+function downloadPDF(){
+  const element = document.body;
 
+  const opt = {
+    margin: 0,
+    filename: 'bank_tizimi.pdf',
+    image: { type: 'jpeg', quality: 1 },
+    html2canvas: { scale: 2 },
+    jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+  };
+
+  html2pdf().set(opt).from(element).save();
+}
 
 </script>
 
