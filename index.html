@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ozarbayjon Bank Tizimi 2020-2024</title>
+
+<!-- Chart.js (ixtiyoriy grafiklar uchun) -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+*{box-sizing:border-box;}
+
+body{
+margin:0;
+font-family:'Segoe UI',sans-serif;
+background: radial-gradient(circle at top,#0f172a,#020617);
+color:#fff;
+overflow:hidden;
+}
+
+/* SLIDE */
+.slide{
+display:none;
+height:100vh;
+padding:40px;
+transition:all .8s ease;
+}
+
+.active{
+display:flex;
+align-items:center;
+justify-content:center;
+animation:fade .8s ease;
+}
+
+@keyframes fade{
+from{opacity:0;transform:scale(0.95) translateY(20px);}
+to{opacity:1;transform:scale(1) translateY(0);}
+}
+
+/* CARD */
+.card{
+width:95%;
+max-width:1200px;
+display:flex;
+gap:30px;
+align-items:center;
+
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(0,245,212,0.2);
+border-radius:25px;
+backdrop-filter:blur(20px);
+box-shadow:0 0 60px rgba(0,245,212,0.15);
+
+padding:30px;
+}
+
+h1,h2{
+color:#00f5d4;
+}
+
+p{
+font-size:18px;
+line-height:1.7;
+color:#cbd5e1;
+}
+
+img{
+width:45%;
+max-height:380px;
+object-fit:cover;
+border-radius:18px;
+border:2px solid rgba(0,245,212,0.3);
+box-shadow:0 0 30px rgba(0,245,212,0.2);
+transform:scale(1);
+transition:.5s;
+}
+img:hover{
+transform:scale(1.03);
+}
+
+/* NAV */
+.nav{
+position:fixed;
+bottom:20px;
+width:100%;
+text-align:center;
+}
+
+button{
+padding:12px 20px;
+margin:5px;
+border:none;
+border-radius:12px;
+font-weight:bold;
+cursor:pointer;
+transition:.3s;
+
+background:linear-gradient(135deg,#00f5d4,#00a6a6);
+color:#000;
+box-shadow:0 0 20px rgba(0,245,212,0.3);
+}
+
+button:hover{
+transform:scale(1.08);
+}
+
+/* TOP PROGRESS */
+.progress{
+position:fixed;
+top:10px;
+left:50%;
+transform:translateX(-50%);
+color:#00f5d4;
+font-weight:bold;
+font-size:18px;
+}
+
+/* AUTO BUTTON */
+.auto-btn{
+position:fixed;
+top:10px;
+right:10px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="progress" id="progress">1 / 20</div>
+
+<!-- SLIDE 1 -->
+<div class="slide active">
+<div class="card">
+<div class="text">
+<h1>Ozarbayjon Bank Tizimi</h1>
+<p>2020–2024 yillar oralig‘ida Ozarbayjon Respublikasi moliyaviy tizimi va bank sektori muhim o‘zgarishlar va rivojlanish bosqichlarini boshdan kechirdi. Ushbu davr global iqtisodiy inqirozlar, pandemiya oqibatlari va keyingi tiklanish jarayonlari bilan ajralib turadi.</p>
+<p>
+2020-yilda COVID-19 pandemiyasi sababli iqtisodiy faollik pasaydi, bu bank sektoriga ham bevosita ta’sir ko‘rsatdi. Kreditlash hajmi qisqardi, ayrim sohalarda investitsiya jarayonlari sekinlashdi. Shu bilan birga, Markaziy bank tomonidan yumshoq monetar siyosat yuritilib, iqtisodiy barqarorlikni saqlashga harakat qilindi.</p>
+</div>
+<img src="img/download (1).jpg">
+</div>
+
+</div>
+
+<script>
+const slidesData = [
+{
+title: "Ozarbayjon bank tizimi (2020–2024)",
+text: "Ozarbayjon bank tizimi mamlakat iqtisodiyotining asosiy moliyaviy tayanchi hisoblanadi. 2020–2024 yillar oralig‘ida tizim pandemiya, global inqiroz va raqamli transformatsiya jarayonlarini boshdan kechirdi. Bank sektori iqtisodiy barqarorlikni ta’minlashda muhim rol o‘ynadi. Davlat tomonidan qo‘llab-quvvatlash choralari kuchaytirildi. Keyingi yillarda tiklanish jarayoni boshlandi. Moliyaviy tizim asta-sekin modernizatsiya qilindi. Raqamli banking rivojlana boshladi. Kreditlash tizimi kengaydi. Banklar iqtisodiy o‘sishga hissa qo‘shdi. Bu davr transformatsiya davri bo‘ldi.",
+img: "./img/2.jpg"
+},
+
+{
+title: "Bank tizimi asoslari",
+text: "Bank tizimi ikki pog‘onali tuzilishga ega: Markaziy bank va tijorat banklari. Ular pul aylanishini tartibga soladi. Kreditlash jarayonini amalga oshiradi. Depozitlarni jalb qiladi. Investitsiya oqimlarini boshqaradi. Moliyaviy barqarorlikni ta’minlaydi. Iqtisodiyotning asosiy qismi hisoblanadi. Pul siyosatini qo‘llab-quvvatlaydi. Xizmatlar doirasi keng. Banklar iqtisodiy rivojlanish uchun muhim vosita hisoblanadi.",
+},
+
+{
+title: "Markaziy bank",
+text: "Markaziy bank pul-kredit siyosatini yuritadi. Inflyatsiyani nazorat qiladi. Milliy valyutani barqaror ushlab turadi. Bank tizimini tartibga soladi. Foiz stavkalarini belgilaydi. Pul massasini boshqaradi. Moliyaviy xavfsizlikni ta’minlaydi. Banklar faoliyatini nazorat qiladi. Iqtisodiy siyosatni qo‘llab-quvvatlaydi. Butun moliya tizimining markazi hisoblanadi.",
+img: "./img/3.jpg"
+},
+
+{
+title: "Monetar siyosat",
+text: "Monetar siyosat iqtisodiyotni boshqarishda asosiy vosita hisoblanadi. 2020-yilda yumshoq siyosat yuritildi. Pandemiya davrida iqtisodiyot qo‘llab-quvvatlandi. 2021–2022 yillarda tiklanish boshlandi. Inflyatsiya bosimi oshdi. Shuning uchun siyosat qattiqlashtirildi. Foiz stavkalari o‘zgartirildi. Pul massasi nazorat qilindi. 2023–2024 yillarda barqarorlik kuchaydi. Siyosat moslashuvchan bo‘ldi.",
+},
+
+{
+title: "Inflyatsiya",
+text: "Inflyatsiya 2020–2024 yillarda muhim ko‘rsatkich bo‘ldi. Narxlar global bozorda oshdi. Energiya narxlari ta’sir qildi. Oziq-ovqat narxlari ham ko‘tarildi. Markaziy bank uni nazorat qildi. Foiz stavkalari oshirildi. Pul siyosati kuchaytirildi. 2023-yildan barqarorlashish boshlandi. Narxlar muvozanatlashdi. Iqtisodiy barqarorlik yaxshilandi.",
+},
+{
+title: "YAIM va Inflyatsiya tahlili (Grafik)",
+text: `
+Ozarbayjon iqtisodiyotida 2020–2024 yillar davomida YAIM va inflyatsiya muhim makroiqtisodiy ko‘rsatkichlar hisoblanadi.
+
+YAIM 2020-yilda pandemiya sabab pasaydi, keyinchalik tiklanish bosqichiga o‘tdi.
+Inflyatsiya esa global narxlar o‘sishi va energiya bozori ta’sirida o‘zgarib turdi.
+
+Grafik orqali ushbu jarayonlar aniq ko‘rsatilgan.
+`,
+img: ""
+},
+{
+title: "YAIM o‘sishi",
+text: "YAIM iqtisodiy rivojlanishni ko‘rsatadi. 2020-yilda pasayish kuzatildi. Pandemiya ta’sir qildi. 2021-yildan tiklanish boshlandi. Neft sektori muhim rol o‘ynadi. Xizmatlar sohasi rivojlandi. Investitsiyalar oshdi. 2022–2024 yillarda o‘sish kuzatildi. Iqtisodiyot barqarorlashdi. Bank tizimi qo‘llab-quvvatladi.",
+img: "./img/yaim.jpg"
+},
+
+{
+title: "Valyuta kursi",
+text: "Manat kursi nisbatan barqaror saqlandi. Neft eksporti muhim rol o‘ynadi. Markaziy bank siyosati ta’sir qildi. Valyuta rezervlari ishlatildi. Bozor muvozanatlashdi. Kurs keskin o‘zgarishlardan himoyalandi. Iqtisodiy xavfsizlik ta’minlandi. Investitsiya muhiti yaxshilandi. Bank tizimi qo‘llab-quvvatladi. Barqarorlik saqlandi.",
+img: "./img/valyut.jpg"
+},
+
+{
+title: "Bank aktivlari",
+text: "Bank aktivlari yildan-yilga oshdi. Kredit portfeli kengaydi. Depozitlar hajmi oshdi. Moliyaviy tizim mustahkamlandi. Risklar boshqarildi. Kapital yetarliligi yaxshilandi. Banklar ishonchliligi oshdi. Investitsiyalar ko‘paydi. Bank sektori rivojlandi. Barqaror o‘sish kuzatildi.",
+},
+
+{
+title: "Kreditlash tizimi",
+text: "Kreditlash iqtisodiyotning asosiy qismi hisoblanadi. Kichik biznes qo‘llab-quvvatlandi. Iste’mol kreditlari oshdi. Korporativ kreditlar kengaydi. Banklar riskni boshqardi. Foiz stavkalari moslashtirildi. Kredit portfeli diversifikatsiya qilindi. Iqtisodiy faollik oshdi. Investitsiya kuchaydi. Bozor rivojlandi.",
+},
+
+{
+title: "Depozitlar",
+text: "Aholi banklarga ishonchi oshdi. Depozitlar hajmi ko‘paydi. Jamg‘arma madaniyati rivojlandi. Bank tizimi mustahkamlandi. Foiz stavkalari ta’sir qildi. Korporativ depozitlar oshdi. Moliyaviy xavfsizlik kuchaydi. Banklar likvidligi yaxshilandi. Investitsiya resurslari ko‘paydi. Tizim barqarorlashdi.",
+},
+
+// 🏦 BANKLAR (11–20)
+{
+title: "Kapital Bank",
+text: "Kapital Bank Ozarbayjondagi eng yirik xususiy banklardan biri hisoblanadi. U kredit, karta va raqamli banking xizmatlarini taklif qiladi. Raqamli platformalari rivojlangan. Mijozlar bazasi keng. Xizmat sifati yuqori. Innovatsion yechimlar joriy etilgan. Bank sektorda muhim o‘rin egallaydi. Raqobatbardosh bank hisoblanadi. Moliyaviy barqaror.",
+img: "./img/kapital.jpg"
+},
+
+{
+title: "PASHA Bank",
+text: "PASHA Bank korporativ mijozlarga xizmat ko‘rsatadi. Investitsion banking yo‘nalishida faol. Yirik loyihalarni moliyalashtiradi. Xalqaro hamkorlikka ega. Raqamli xizmatlar rivojlangan. Risk boshqaruvi kuchli. Kapital bozorda faol. Innovatsiyalar joriy etadi. Moliyaviy tahlil kuchli. Yetakchi banklardan biri.",
+img: "./img/pasha.jpg"
+},
+
+{
+title: "International Bank of Azerbaijan",
+text: "IBA eng yirik davlat bankidir. Keng filial tarmog‘iga ega. Universal bank xizmatlarini ko‘rsatadi. Kreditlash faol. Davlat loyihalarini qo‘llab-quvvatlaydi. Raqamli banking rivojlangan. Moliyaviy barqarorlik yuqori. Xalqaro aloqalari mavjud. Bank sektorda yetakchi. Katta aktivlarga ega.",
+},
+
+{
+title: "Xalq Bank",
+text: "Xalq Bank aholiga xizmat ko‘rsatadi. Pensiya va ijtimoiy to‘lovlar bilan ishlaydi. Kredit xizmatlari mavjud. Raqamli banking rivojlangan. Filiallari keng. Mijozlarga yo‘naltirilgan. Barqaror bank hisoblanadi. Xizmat sifati oshirilgan. Aholi bilan ishlash kuchli. Ijtimoiy ahamiyatga ega.",
+img: "./img/xalq.jpg"
+},
+
+{
+title: "Raqamli banking",
+text: "Mobil banking keng rivojlandi. Internet banking ommalashdi. Naqd pulsiz to‘lovlar oshdi. Ilovalar qulaylashdi. Xavfsizlik kuchaydi. Operatsiyalar tezlashdi. Mijozlar tajribasi yaxshilandi. Bank xizmatlari soddalashdi. Innovatsiya kuchaydi. Zamonaviy tizim yaratildi.",
+},
+
+{
+title: "Fintech",
+text: "Fintech texnologiyalar bank tizimini o‘zgartirdi. To‘lov tizimlari avtomatlashtirildi. Startaplar paydo bo‘ldi. Innovatsiya kuchaydi. Raqamli iqtisodiyot rivojlandi. Xizmatlar tezlashdi. Xarajatlar kamaydi. Xavfsizlik oshdi. Bozor kengaydi. Yangi imkoniyatlar yaratildi.",
+},
+
+{
+title: "Risk boshqaruvi",
+text: "Banklar risklarni boshqarish tizimini kuchaytirdi. Kredit risklari nazorat qilindi. Moliyaviy xavflar kamaytirildi. Analitik tizimlar ishlatildi. Monitoring kuchaydi. Barqarorlik oshdi. Ichki nazorat rivojlandi. Kapital yetarliligi oshirildi. Xavfsizlik ta’minlandi. Bank tizimi mustahkamlandi.",
+img: "./img/risk.jpg"
+},
+
+{
+title: "Investitsiya",
+text: "Banklar investitsiya loyihalarini moliyalashtirdi. Energetika sektori qo‘llab-quvvatlandi. Yirik loyihalar amalga oshirildi. Kapital oqimi oshdi. Xalqaro investitsiyalar keldi. Iqtisodiy o‘sish tezlashdi. Banklar faol ishtirok etdi. Moliyaviy bozor rivojlandi. Raqobat kuchaydi. Barqarorlik oshdi.",
+},
+// ➕ QOLGAN SLAYDLAR (21–40)
+
+{
+title: "Bank tizimi islohoti",
+text: "2020–2024 yillar davomida Ozarbayjon Respublikasining bank tizimi chuqur tarkibiy islohotlar bosqichidan o‘tdi. Ushbu islohotlarning asosiy maqsadi bank sektorini barqarorlashtirish, xalqaro standartlarga moslashtirish va raqamli iqtisodiyot talablariga javob beradigan zamonaviy moliyaviy tizim yaratish edi. Markaziy bank tomonidan banklarning kapital yetarliligi bo‘yicha talablar kuchaytirildi, aktivlar sifatini yaxshilashga qaratilgan siyosat yuritildi. Noto‘lov kreditlar (NPL) ulushini kamaytirish bo‘yicha chora-tadbirlar amalga oshirildi. Bank nazorati va audit tizimi kuchaytirilib, moliyaviy shaffoflik oshirildi.",
+},
+
+{
+title: "Moliyaviy barqarorlik",
+text: "Moliyaviy barqarorlik Ozarbayjon iqtisodiy siyosatining asosiy ustun yo‘nalishlaridan biri hisoblanadi. 2020–2024 yillarda global iqtisodiy noaniqliklar, pandemiya oqibatlari va energiya bozoridagi o‘zgarishlarga qaramasdan bank tizimi barqarorligini saqlab qoldi. Markaziy bank tomonidan stress-test mexanizmlari joriy etilib, banklarning inqirozga chidamliligi sinovdan o‘tkazildi.",
+img: "./img/moliya.jpg"
+},
+
+{
+title: "Pul massasi",
+text: "Ozarbayjon Markaziy banki pul massasini boshqarishda inflyatsiyani nazorat qilish va iqtisodiy o‘sishni qo‘llab-quvvatlash siyosatini olib bordi. Pul-kredit siyosati instrumentlari, jumladan, qayta moliyalash stavkasi, majburiy zaxiralar normasi va ochiq bozor operatsiyalari samarali qo‘llanildi. Pul massasi o‘sishi real sektor talablariga moslashtirildi. Kreditlash hajmi bosqichma-bosqich oshirilib, iqtisodiyotga likvidlik yetkazib berildi. Shu bilan birga, inflyatsiya darajasini barqaror ushlab turish asosiy maqsad bo‘lib qoldi.",
+},
+
+{
+title: "Foiz stavkalari",
+text: "2020–2024 yillarda foiz stavkalari iqtisodiy vaziyatga qarab moslashuvchan tarzda boshqarildi. Inflyatsiya bosimi oshgan davrlarda asosiy stavka ko‘tarildi, iqtisodiy faollikni rag‘batlantirish zarur bo‘lgan paytlarda esa pasaytirildi. Foiz siyosati orqali kredit bozoridagi muvozanat ta’minlandi. Bank kreditlari hajmi va depozitlar o‘rtasidagi nisbat barqarorlashdi. Bu investitsion faollikni oshirishga xizmat qildi.",
+},
+
+{
+title: "Tashqi iqtisodiy aloqalar",
+text: "Ozarbayjon bank tizimi xalqaro moliya tizimiga integratsiyalashuvni kuchaytirdi. Xorijiy banklar va moliyaviy institutlar bilan hamkorlik kengaydi. Xalqaro to‘lov tizimlari bilan integratsiya kuchaytirildi. Valyuta operatsiyalarining erkinlashuvi va investitsiya oqimlarining oshishi bank sektorining global moliyaviy tizimdagi rolini mustahkamladi. Shuningdek, xalqaro kredit liniyalari va investitsiya fondlari bilan hamkorlik kengaydi.",
+},
+
+{
+title: "Neft sektorining ta’siri",
+text: "Ozarbayjon iqtisodiyotining asosiy tayanchi bo‘lgan neft va gaz sektori bank tizimiga bevosita ta’sir ko‘rsatadi. 2020–2024 yillarda neft eksportidan tushgan daromadlar bank tizimining likvidligini oshirishda muhim rol o‘ynadi. Valyuta tushumlari milliy valyuta barqarorligini ta’minlashga yordam berdi. Shu bilan birga, neft sektoriga bog‘liqlik iqtisodiy diversifikatsiya zaruratini ham kuchaytirdi.",
+},
+
+{
+title: "Makroiqtisodiy barqarorlik",
+text: "2020–2024 yillarda Ozarbayjon iqtisodiyotida bosqichma-bosqich tiklanish jarayoni kuzatildi. YAIM o‘sish sur’atlari barqarorlashdi, inflyatsiya nazorat ostiga olindi va davlat moliyasi mustahkamlandi. Ishsizlik darajasi pasaytirildi, aholi daromadlari oshdi va iqtisodiy faollik tiklandi. Bank tizimi bu jarayonlarda asosiy moliyaviy vositachi sifatida muhim rol o‘ynadi.",
+img: "./img/iqi.jpg"
+},
+
+{
+title: "Bank sektoridagi raqobat",
+text: "Banklar o‘rtasidagi raqobat kuchayishi natijasida xizmat sifati oshdi va yangi mahsulotlar ishlab chiqildi. Raqamli banking, mobil ilovalar va onlayn kreditlash tizimlari keng tarqaldi. Mijozlarga yo‘naltirilgan strategiyalar ishlab chiqildi va banklar o‘z xizmatlarini diversifikatsiya qildi. Bu esa bozor samaradorligini oshirdi.",
+},
+
+{
+title: "Xizmatlar sifati",
+text: "Bank xizmatlarining raqamlashtirilishi eng muhim tendensiyalardan biri bo‘ldi. Mobil banking ilovalari, onlayn to‘lov tizimlari va elektron xizmatlar keng joriy etildi.Mijozlar uchun tezkor, qulay va xavfsiz xizmat ko‘rsatish tizimi yaratildi. Natijada bank xizmatlaridan foydalanish darajasi sezilarli oshdi.",
+},
+
+{
+title: "Tijorat banklari umumiy tahlili",
+text: "Ozarbayjonda tijorat banklari iqtisodiyotning asosiy moliyaviy tayanchi hisoblanadi. Ular kreditlash, depozit qabul qilish, investitsiya loyihalarini moliyalashtirish va to‘lov tizimlarini boshqarishda muhim rol o‘ynaydi. Bank sektori 2020–2024 yillarda barqaror o‘sish va modernizatsiya jarayonini boshdan kechirdi.",
+},
+
+// 🏦 4 TA BANK CHUQUR TAHLILI
+
+{
+title: "Kapital Bank tahlili",
+text: "Kapital Bank Ozarbayjonning eng yirik xususiy banklaridan biri hisoblanadi. Bank raqamli banking sohasida yetakchi o‘rinda turadi. Mobil ilovalar va onlayn xizmatlar juda rivojlangan. 2020–2024 yillarda bank kredit portfelini kengaytirdi, mijozlar bazasini oshirdi va fintech yechimlarini joriy qildi. Bankning moliyaviy barqarorligi yuqori darajada saqlanib qoldi.",
+},
+
+{
+title: "PASHA Bank tahlili",
+text: "PASHA Bank asosan korporativ mijozlarga xizmat ko‘rsatadi. Bank yirik biznes loyihalar va investitsiya dasturlarini moliyalashtirishda faol ishtirok etadi. Xalqaro hamkorlik kengaygan bo‘lib, risklarni boshqarish tizimi yuqori darajada rivojlangan. Bank iqtisodiyotning strategik sektorlarini qo‘llab-quvvatlaydi.",
+},
+
+{
+title: "IBA tahlili",
+text: "International Bank of Azerbaijan mamlakatning eng yirik davlat banki hisoblanadi. U davlat investitsiya loyihalarini moliyalashtirishda asosiy rol o‘ynaydi. Bank aktivlari juda katta bo‘lib, xizmatlar spektri kengdir. So‘nggi yillarda raqamli transformatsiya jarayonlari kuchaygan.",
+},
+
+{
+title: "Xalq Bank tahlili",
+text: "Xalq Bank ijtimoiy yo‘naltirilgan bank hisoblanadi. Pensiya va to‘lov tizimlari bilan ishlaydi. Filiallar tarmog‘i keng. Aholiga xizmat sifati yuqori. Xalq Bank ijtimoiy yo‘naltirilgan bank sifatida faoliyat yuritadi. Pensiya to‘lovlari, kommunal xizmatlar va aholiga xizmat ko‘rsatish asosiy yo‘nalish hisoblanadi. Bank filiallar tarmog‘i keng bo‘lib, aholi uchun qulay moliyaviy xizmatlar taqdim etadi.",
+},
+
+// 📊 YAKUNIY QISMLAR
+
+{
+title: "Raqamli transformatsiya yakuni",
+text: "Raqamli transformatsiya bank tizimini tubdan o‘zgartirdi. Naqd pulsiz iqtisodiyot rivojlandi. Mobil banking kengaydi. Innovatsiyalar kuchaydi.",
+},
+
+{
+title: "Umumiy natijalar",
+text: "2020–2024 yillarda bank tizimi barqaror o‘sdi. Inflyatsiya nazorat qilindi. YAIM tiklandi. Kreditlash kengaydi. Banklar modernizatsiya qilindi.",
+},
+
+{
+title: "Kelajak prognozi",
+text: "Kelajakda bank tizimi yanada raqamlashtiriladi. Fintech rivojlanadi. Xalqaro integratsiya kuchayadi. Yangi investitsiyalar jalb qilinadi.",
+},
+
+{
+title: "Xulosa",
+text: "2020–2024 yillarda Ozarbayjon bank tizimi sezilarli rivojlandi. Pandemiya oqibatlari yengildi. Monetar siyosat barqarorlikni ta’minladi. Inflyatsiya nazorat qilindi. YAIM o‘sdi. Banklar modernizatsiya qilindi. Raqamli banking kuchaydi. Kreditlash kengaydi. Moliyaviy tizim mustahkamlandi. Kelajakda yanada rivojlanish kutilmoqda.",
+img: "./img/19.jpg"
+}
+];
+
+slidesData.forEach((s,i)=>{
+let div=document.createElement("div");
+div.className="slide";
+div.innerHTML=`
+<div class="card">
+<div class="text">
+<h2>${s.title}</h2>
+<p>${s.text}</p>
+</div>
+${s.img ? `<img src="${s.img}">` : ""}
+</div>`;
+document.body.appendChild(div);
+});
+let current = 0;
+const slides = document.querySelectorAll(".slide");
+const progress = document.getElementById("progress");
+
+let auto = false;
+let interval;
+
+function showSlide(i){
+slides[current].classList.remove("active");
+current = i;
+slides[current].classList.add("active");
+progress.innerText = `${current+1} / ${slides.length}`;
+}
+
+function next(){
+if(current < slides.length - 1){
+showSlide(current + 1);
+} else {
+showSlide(0);
+}
+}
+
+function prev(){
+if(current > 0){
+showSlide(current - 1);
+} else {
+showSlide(slides.length - 1);
+}
+}
+
+/* AUTO SLIDE */
+function startAuto(){
+interval = setInterval(next, 4000); // 4 sekund
+document.getElementById("autoBtn").innerText = "⏸ Pause";
+auto = true;
+}
+
+function stopAuto(){
+clearInterval(interval);
+document.getElementById("autoBtn").innerText = "▶ Play";
+auto = false;
+}
+
+function toggleAuto(){
+if(auto){
+stopAuto();
+}else{
+startAuto();
+}
+}
+
+/* KEYBOARD */
+document.addEventListener("keydown",e=>{
+if(e.key=="ArrowRight") next();
+if(e.key=="ArrowLeft") prev();
+});
+</script>
+
+<div class="nav">
+<button onclick="prev()">⬅ Oldingi</button>
+<button onclick="toggleAuto()" id="autoBtn">⏯ Auto Play</button>
+<button onclick="next()">Keyingi ➡</button>
+</div>
+
+</body>
+</html>
