@@ -59,7 +59,7 @@ img{
 
 <body>
 
-<div class="menu" id="menu"></div>
+
 
 <div id="container"></div>
 
@@ -292,12 +292,7 @@ slidesData.forEach((s,i)=>{
 
   container.appendChild(sec);
 
-  // MENU BUTTON
-  let btn = document.createElement("button");
-  btn.innerText = i+1;
-  btn.onclick = ()=>document.getElementById("s"+i).scrollIntoView({behavior:"smooth"});
-  menu.appendChild(btn);
-});
+  
 </script>
 
 </body>
